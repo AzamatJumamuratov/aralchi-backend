@@ -6,7 +6,7 @@
   "outDir": "./dist",
   "scripts": {
     "dev": "nodemon --exec node --loader ts-node/esm index.ts",
-    "build": "tsc index.ts",
+    "build": "tsc",
     "start": "node dist/index.js"
   },
   "keywords": [],

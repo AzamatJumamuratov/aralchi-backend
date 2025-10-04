@@ -1,45 +1,21 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
+    /* Основные настройки */
+    "target": "ES2022", // Современный стандарт JavaScript
+    "module": "NodeNext", // Современная система модулей для Node.js
+    "lib": ["ES2022"], // 👈 Ключевой фикс: "учит" TypeScript, что такое Promise и другие глобальные объекты
+    "outDir": "./dist", // Куда складывать скомпилированные JS-файлы
+    "rootDir": "./", // Где лежат исходные TS-файлы
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "NodeNext",
+    /* Настройки модулей */
     "moduleResolution": "NodeNext",
-    "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    "esModuleInterop": true, // Для совместимости между CommonJS и ES модулями
 
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true
-  }
+    /* Строгость и качество кода */
+    "strict": true, // Включаем все строгие проверки
+    "skipLibCheck": true, // Не проверять файлы деклараций из node_modules
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["index.ts", "src/**/*.ts"], // Указываем, какие файлы компилировать
+  "exclude": ["node_modules"] // Исключаем папку с зависимостями
 }
