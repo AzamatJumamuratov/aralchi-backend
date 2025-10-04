@@ -1,0 +1,34 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id         Int        @id @default(autoincrement())
+  title      String
+  completed  Boolean    @default(false)
+  createdAt  DateTime   @default(now())
+  categories Category[] 
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  tasks Task[]
+  users User[] // 👈 Добавляем связь с пользователями
+}
+
+// 👇 НОВАЯ МОДЕЛЬ USER 👇
+model User {
+  id         Int        @id @default(autoincrement())
+  email      String     @unique // Email должен быть уникальным
+  password   String     // Здесь будет храниться ХЕШ пароля
+  createdAt  DateTime   @default(now())
+  categories Category[] // Связь с категориями, которые выбрал пользователь
+}
